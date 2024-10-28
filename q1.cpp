@@ -17,7 +17,7 @@ class GasPump {
         
 		void dispense(int seconds) {
 
-
+			amountDispensed = seconds * 0.10; // Dispenses 0.10 gallons per second
 			
 			amountCharged = amountDispensed * costPerGallon;
 		}
@@ -25,16 +25,38 @@ class GasPump {
             
 			amountDispensed = 0.0;
 			amountCharged = 0.0;
-		}		
-};
+		}
+		// Method to display amounts
+		void display() {
+            		cout << fixed << setprecision(2); // Set decimal precision for currency
+            		cout << "Amount dispensed: " << amountDispensed << " gallons" << endl;
+            		cout << "Cost per gallon: $" << costPerGallon << endl;
+            		cout << "Total cost: $" << amountCharged << endl;
+		}
+		};
 	
 int main() {
 	
-    //Define variables
+     // Variables
+    double costPerGallon;
+    int seconds;
 
-    // Define Class Object
+    // Object of GasPump
+    GasPump gasPump;
 
-    // Call Functions
+    // Prompt user for input
+    cout << "Enter the cost per gallon of gas: $";
+    cin >> costPerGallon;
+    gasPump.setCostPerGallon(costPerGallon);
+
+    cout << "Enter the number of seconds to pump gas: ";
+    cin >> seconds;
+
+    // Dispense gas
+    gasPump.dispense(seconds);
+
+    // Display results
+    gasPump.display();
 	
 
 	return 0;
